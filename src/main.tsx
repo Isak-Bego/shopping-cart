@@ -3,16 +3,11 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './styles/tailwind.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Success from './Success.tsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  },
-  {
-    path: "/success",
-    element: <Success />,
   },
 ]);
 

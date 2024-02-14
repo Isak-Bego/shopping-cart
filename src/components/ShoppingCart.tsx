@@ -1,11 +1,27 @@
 import React from "react";
+import { useOutletContext } from "react-router-dom";
+import CartItem from "./CartItem";
+
+type fakeStoreItem = {
+    id: number, 
+    title: string, 
+    price: number,
+    image: string,
+    quantity?: number
+}
 
 const ShoppingCart: React.FC = () => {
-    return (
-        <>
-        <h3>Shopping Cart 🛒</h3>
-        </>
-    );
+    const [cartItems, setCartItems] : [Array<fakeStoreItem>, ((cartItems: Array<fakeStoreItem>) => void)] = useOutletContext();
+
+    if(cartItems.length == 0){
+        return(
+            <div>Cart is empty...</div>
+        );
+    }else{
+        return(
+            cartItems.map((el) => <CartItem {...el} key={el.id} setCartItems={setCartItems}/>)
+        );
+    }
 }
 
 export default ShoppingCart;

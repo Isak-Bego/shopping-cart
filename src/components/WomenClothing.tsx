@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
 
-type fakeStoreResponse = {
+type fakeStoreItem = {
     id: number, 
     title: string, 
     price: number,
-    image: string
+    image: string,
+    quantity: number
 }
 
 const WomenClothing: React.FC = () => {
@@ -16,7 +17,7 @@ const WomenClothing: React.FC = () => {
         fetch("https://fakestoreapi.com/products/category/women's clothing", {mode:"cors"})
         .then((response) => response.json())
         .then((response) => {
-            setContent(response.map((element : fakeStoreResponse) => {
+            setContent(response.map((element : fakeStoreItem) => {
                 return {
                     id: element.id, 
                     title: element.title,
@@ -41,7 +42,7 @@ const WomenClothing: React.FC = () => {
     }
     return (
         <div className="flex gap-4 m-8 flex-wrap justify-center">
-            {content.map((data: fakeStoreResponse ) => <ItemCard {...data} key={data.id}/>)}
+            {content.map((data: fakeStoreItem ) => <ItemCard {...data} key={data.id}/>)}
         </div>
     );
 }

@@ -22,8 +22,13 @@ const CartItem = ({title, image, id, price, quantity, setCartItems} : x) => {
                     <h1 className="font-semibold text-2xl">${price}</h1>
                 </div>
             </div>
-            <div>
-
+            <div className="w-1/2 flex flex-col justify-end items-end">
+                <div className="self-start justify-self-start">
+                    <h1>X</h1>
+                </div>
+                <div className="flex justify-right items-right">
+                    <input type="number" className="border h-10" value={quantity}/>
+                </div>
             </div>
         </div>
     );

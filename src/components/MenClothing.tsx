@@ -40,7 +40,9 @@ const MenClothing: React.FC = () => {
         );
     }
     return (
-        content.map((data: fakeStoreResponse ) => <ItemCard {...data} key={data.id}/>)
+        <div className="flex gap-4 m-8 flex-wrap justify-center">
+            {content.map((data: fakeStoreResponse ) => <ItemCard {...data} key={data.id}/>)}
+        </div>
     );
 }
 

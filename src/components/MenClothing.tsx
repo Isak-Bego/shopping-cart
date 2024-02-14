@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ItemCard from "./ItemCard.tsx"
 
 type fakeStoreResponse = {
     id: number, 
@@ -22,20 +23,24 @@ const MenClothing: React.FC = () => {
                     price: element.price,
                     image: element.image
                 }
-            }))
+            }));
+            setLoading(false);
         }) 
 
         
         return () => {
             setContent([]);
+            setLoading(true);
         }
-
     }, [])
 
+    if(loading){
+        return(
+            <div>Loading...</div>
+        );
+    }
     return (
-        <>
-        <h3>Men!</h3>
-        </>
+        content.map((data: fakeStoreResponse ) => <ItemCard {...data} key={data.id}/>)
     );
 }
 

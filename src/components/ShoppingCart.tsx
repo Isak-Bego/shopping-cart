@@ -1,6 +1,7 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
 import CartItem from "./CartItem";
+import Receipt from "./Receipt";
 
 type fakeStoreItem = {
     id: number, 
@@ -19,7 +20,10 @@ const ShoppingCart: React.FC = () => {
         );
     }else{
         return(
-            cartItems.map((el) => <CartItem {...el} key={el.id} setCartItems={setCartItems}/>)
+            <div className="w-11/12 m-auto">
+                {cartItems.map((el) => <CartItem {...el} key={el.id} setCartItems={setCartItems} cartItems={cartItems}/>)}
+                <Receipt cartItems={cartItems}/>
+            </div>
         );
     }
 }

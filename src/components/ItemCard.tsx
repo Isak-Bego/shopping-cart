@@ -55,7 +55,7 @@ const ItemCard = ({title, price, image, id} : fakeStoreItem) => {
                 <h5 className="text-lg">{title}</h5>
                 <h1 className="font-semibold text-2xl">${price}</h1>
             </div>
-            <button className="w-full mt-auto bg-color-2 text-white p-2 rounded-lg" onClick={() => handleClick({id: id, title: title, price: price, image: image})}>+ Add to cart</button>
+            <button className="w-full mt-auto bg-color-2 text-white p-2 rounded-lg add-to-cart-button border" onClick={() => handleClick({id: id, title: title, price: price, image: image})}>+ Add to cart</button>
         </div>
     );
 }

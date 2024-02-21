@@ -40,3 +40,17 @@
 .text-color-4{
     color: var(--color-4);
 }
+
+.add-to-cart-button:hover{
+    border: solid 1px var(--color-1);
+    background-color: white;
+    color: var(--color-1);
+}
+
+.quantity-indicator{
+    top: -0.45em; 
+    right: -1.5em; 
+    font-size: smaller;
+    width: 1.5em;
+    border-radius: 4em;
+}

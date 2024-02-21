@@ -10,8 +10,7 @@ const SiteEssentials: React.FC = () => {
 
     return (
         <>
-            <Header />
-            <div>Items on the cart {cartItems.length}</div>
+            <Header cartItemsQuantity={cartItems.length}/>
             <Outlet context={[cartItems, setCartItems]}/> 
             <Footer />
         </>

@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 type fakeStoreItem = {
     id: number, 
@@ -8,11 +8,29 @@ type fakeStoreItem = {
     quantity?: number
 }
 
-type x = fakeStoreItem & {setCartItems: (cartItems : Array<fakeStoreItem>) => void}
+type x = fakeStoreItem & {setCartItems: (cartItems : Array<fakeStoreItem>) => void} & {cartItems: Array<fakeStoreItem>}
 
-const CartItem = ({title, image, id, price, quantity, setCartItems} : x) => {
+const CartItem = ({title, image, id, price, quantity, setCartItems, cartItems} : x) => {
+    const handleChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+        const updatedCartItems = cartItems.map((el : fakeStoreItem) => {
+            if(el.id == id){
+                el.quantity = parseInt(event.target.value); 
+                return el;
+            }
+            return el; 
+        })
+
+        quantity = parseInt(event.target.value); 
+        setCartItems(updatedCartItems);
+    }
+
+    const handleClick = () => {
+        const updatedCartItems = cartItems.filter((el) => el.id != id); 
+        setCartItems(updatedCartItems);
+    }
+
     return(
-        <div className="flex w-11/12 border rounded-xl m-auto p-4 shadow-xl mb-6 items-center">
+        <div className="flex border rounded-xl p-4 shadow-xl mb-6 items-center">
             <div className="w-1/2 flex">
                 <div className="h-36 m-2">
                     <img src={image} alt="Image" className="h-full"/>
@@ -22,12 +40,12 @@ const CartItem = ({title, image, id, price, quantity, setCartItems} : x) => {
                     <h1 className="font-semibold text-2xl">${price}</h1>
                 </div>
             </div>
-            <div className="w-1/2 flex flex-col justify-end items-end">
-                <div className="self-start justify-self-start">
-                    <h1>X</h1>
+            <div className="w-1/2 flex flex-col justify-end items-end h-36">
+                <div className="self-end mb-auto px-2 border cursor-pointer hover:bg-red-500 hover:text-white" onClick={handleClick}>
+                    <h1 className="hover:bg-red-500">X</h1>
                 </div>
                 <div className="flex justify-right items-right">
-                    <input type="number" className="border h-10" value={quantity}/>
+                    <input type="number" className="border h-10 text-center" min="1" max="99" value={quantity} onChange={handleChange}/>
                 </div>
             </div>
         </div>

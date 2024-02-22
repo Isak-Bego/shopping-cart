@@ -8,7 +8,7 @@ interface componentProps{
 const Header : React.FC<componentProps> = ({cartItemsQuantity}) => {
     return (
         <>
-        <div className="flex flex-col justify-center items-center p-3 gap-2">
+        <div className="flex flex-col justify-center items-center p-3 gap-2 flex-initial">
             <div className="w-52">
             <Link to="/"><img src={ShopLogo} alt="Shop Logo" className=""/></Link>
             </div>

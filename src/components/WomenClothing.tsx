@@ -37,7 +37,7 @@ const WomenClothing: React.FC = () => {
 
     if(loading){
         return(
-            <div>Loading...</div>
+            <div className="lds-ring-container"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div>
         );
     }
     return (

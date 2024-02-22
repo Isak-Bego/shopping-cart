@@ -10,8 +10,12 @@ const SiteEssentials: React.FC = () => {
 
     return (
         <>
-            <Header cartItemsQuantity={cartItems.length}/>
-            <Outlet context={[cartItems, setCartItems]}/> 
+            <div className="min-h-screen flex flex-col">
+                <Header cartItemsQuantity={cartItems.length}/>
+                <div className="flex-auto flex justify-center items-center">
+                    <Outlet context={[cartItems, setCartItems]}/> 
+                </div>
+            </div>
             <Footer />
         </>
     );
